@@ -2,6 +2,7 @@
 
 require_relative "gcm_rb/version"
 require_relative "gcm_rb/prompt"
+require_relative "gcm_rb/services/llama_cpp"
 require_relative "gcm_rb/services/ollama"
 require_relative "gcm_rb/services/gemini"
 
@@ -18,8 +19,10 @@ module GcmRb
 
     service = if ENV["GEMINI_API_KEY"]
                 Services::Gemini.new
-              else
+              elsif ENV["OLLAMA_MODEL"] || ENV["OLLAMA_URL"]
                 Services::Ollama.new
+              else
+                Services::LlamaCpp.new
               end
 
     puts service.generate(prompt)

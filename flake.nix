@@ -22,6 +22,7 @@
           packages = with pkgs; [
             ruby_3_4
             bundler
+            llama-cpp
           ];
           shellHook = ''
             export BUNDLE_PATH=".bundler"

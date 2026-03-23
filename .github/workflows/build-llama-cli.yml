@@ -1,0 +1,67 @@
+name: Build static llama-cli
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "llama-*"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            arch: x86_64-linux
+          - runner: ubuntu-24.04-arm
+            arch: aarch64-linux
+    runs-on: ${{ matrix.runner }}
+
+    steps:
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Build static llama-cli
+        run: |
+          nix build nixpkgs#pkgsStatic.llama-cpp -o result
+          cp result/bin/llama-cli llama-cli-${{ matrix.arch }}
+          file llama-cli-${{ matrix.arch }}
+          ls -lh llama-cli-${{ matrix.arch }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: llama-cli-${{ matrix.arch }}
+          path: llama-cli-${{ matrix.arch }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      - name: Get llama.cpp version
+        id: version
+        run: |
+          echo "version=$(nix eval nixpkgs#llama-cpp.version --raw 2>/dev/null || echo unknown)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: llama-${{ steps.version.outputs.version }}
+          name: llama-cli static build (${{ steps.version.outputs.version }})
+          body: |
+            Static musl-linked `llama-cli` binary from llama.cpp ${{ steps.version.outputs.version }}.
+            Works on any Linux (NixOS, Ubuntu, Alpine, etc.) without runtime dependencies.
+          files: |
+            llama-cli-x86_64-linux
+            llama-cli-aarch64-linux

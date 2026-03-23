@@ -12,10 +12,11 @@ Gem::Specification.new do |spec|
 
   spec.description = <<~DESC
     A CLI tool that generates meaningful Git commit messages with appropriate
-    emojis based on your Git diff, powered by LLMs through Ollama or Gemini.
+    emojis based on your Git diff. Runs locally with tiny GGUF models via
+    llama.cpp, with Ollama and Gemini as optional fallbacks.
   DESC
 
-  spec.homepage = "https://github.com/n-at-han-k/llm-commit-message-rb"
+  spec.homepage = "https://github.com/n-at-han-k/gcm.rb"
   spec.license = "Apache-2.0"
   spec.required_ruby_version = ">= 3.2.0"
 
