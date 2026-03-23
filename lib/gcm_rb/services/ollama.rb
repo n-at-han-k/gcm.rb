@@ -4,7 +4,7 @@ require "net/http"
 require "json"
 require "uri"
 
-module Gcm
+module GcmRb
   module Services
     class Ollama
       DEFAULT_MODEL = "gemma3"

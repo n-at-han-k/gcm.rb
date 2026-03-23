@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Gcm
+module GcmRb
   module Prompt
     TEMPLATE = <<~PROMPT
       Generate a Git commit message with its description and an appropriate emoji based on the provided Git diff.

@@ -1,23 +1,88 @@
+PATH
+  remote: .
+  specs:
+    gcm_rb (0.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.9)
+      public_suffix (>= 2.0.2, < 8.0)
+    ast (2.4.3)
+    bigdecimal (4.0.1)
     json (2.19.2)
-    net-http (0.4.1)
-      uri
-    uri (1.1.1)
+    json-schema (6.2.0)
+      addressable (~> 2.8)
+      bigdecimal (>= 3.1, < 5)
+    language_server-protocol (3.17.0.5)
+    lint_roller (1.1.0)
+    mcp (0.8.0)
+      json-schema (>= 4.1)
+    minitest (5.27.0)
+    parallel (1.27.0)
+    parser (3.3.10.2)
+      ast (~> 2.4.1)
+      racc
+    prism (1.9.0)
+    public_suffix (7.0.5)
+    racc (1.8.1)
+    rainbow (3.1.1)
+    rake (13.3.1)
+    regexp_parser (2.11.3)
+    rubocop (1.85.1)
+      json (~> 2.3)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
+      mcp (~> 0.6)
+      parallel (~> 1.10)
+      parser (>= 3.3.0.2)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 2.9.3, < 3.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 4.0)
+    rubocop-ast (1.49.1)
+      parser (>= 3.3.7.2)
+      prism (~> 1.7)
+    ruby-progressbar (1.13.0)
+    unicode-display_width (3.2.0)
+      unicode-emoji (~> 4.1)
+    unicode-emoji (4.2.0)
 
 PLATFORMS
   ruby
   x86_64-linux
 
 DEPENDENCIES
-  json
-  net-http
+  gcm_rb!
+  minitest (~> 5.0)
+  rake (~> 13.0)
+  rubocop (~> 1.21)
 
 CHECKSUMS
-  json (2.19.2) sha256=e7e1bd318b2c37c4ceee2444841c86539bc462e81f40d134cf97826cb14e83cf
-  net-http (0.4.1) sha256=a96efc5ea18bcb9715e24dda4159d10f67ff0345c8a980d04630028055b2c282
-  uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
+  addressable (2.8.9)
+  ast (2.4.3)
+  bigdecimal (4.0.1)
+  gcm_rb (0.1.1)
+  json (2.19.2)
+  json-schema (6.2.0)
+  language_server-protocol (3.17.0.5)
+  lint_roller (1.1.0)
+  mcp (0.8.0)
+  minitest (5.27.0)
+  parallel (1.27.0)
+  parser (3.3.10.2)
+  prism (1.9.0)
+  public_suffix (7.0.5)
+  racc (1.8.1)
+  rainbow (3.1.1)
+  rake (13.3.1)
+  regexp_parser (2.11.3)
+  rubocop (1.85.1)
+  rubocop-ast (1.49.1)
+  ruby-progressbar (1.13.0)
+  unicode-display_width (3.2.0)
+  unicode-emoji (4.2.0)
 
 BUNDLED WITH
   4.0.7

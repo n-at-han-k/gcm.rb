@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "gcm/prompt"
-require_relative "gcm/services/ollama"
-require_relative "gcm/services/gemini"
+require_relative "gcm_rb/version"
+require_relative "gcm_rb/prompt"
+require_relative "gcm_rb/services/ollama"
+require_relative "gcm_rb/services/gemini"
 
-module Gcm
+module GcmRb
   def self.run
     diff = $stdin.read
 

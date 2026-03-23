@@ -4,7 +4,7 @@ require "net/http"
 require "json"
 require "uri"
 
-module Gcm
+module GcmRb
   module Services
     class Gemini
       API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
